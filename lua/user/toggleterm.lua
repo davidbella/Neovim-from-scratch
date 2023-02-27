@@ -68,3 +68,9 @@ local python = Terminal:new({ cmd = "python", hidden = true })
 function _PYTHON_TOGGLE()
 	python:toggle()
 end
+
+local ranger = Terminal:new({ cmd = "ranger", hidden = true})
+
+function _RANGER_TOGGLE()
+  ranger:toggle()
+end
