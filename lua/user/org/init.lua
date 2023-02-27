@@ -1,5 +1,19 @@
 require('orgmode').setup_ts_grammar()
 
+-- Treesitter configuration
+require('nvim-treesitter.configs').setup {
+  -- If TS highlights are not enabled at all, or disabled via `disable` prop,
+  -- highlighting will fallback to default Vim syntax highlighting
+  highlight = {
+    enable = true,
+    disable = {'org'}, -- without this, some org files run _really_ slow
+    -- Required for spellcheck, some LaTex highlights and
+    -- code block highlights that do not have ts grammar
+    additional_vim_regex_highlighting = {'org'},
+  },
+  ensure_installed = {'org'}, -- Or run :TSUpdate org
+}
+
 require('orgmode').setup({
   org_default_notes_file = '~/Documents/MyDocuments/Orgmode/orgmode/refile.org',
   org_todo_keywords = {'TODO(t)', 'NEXT(n)', "WAIT(w)", "HOLD(h)", '|', 'CNCL(c)', 'DONE(d)', 'MEET'},
