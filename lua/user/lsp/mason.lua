@@ -7,6 +7,8 @@ local servers = {
 	-- "bashls",
 	"jsonls",
 	-- "yamlls",
+  "ruby_ls",
+  "solargraph",
 }
 
 local settings = {
