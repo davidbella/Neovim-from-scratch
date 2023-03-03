@@ -36,6 +36,13 @@ local options = {
   sidescrolloff = 8,                       -- minimal number of screen columns either side of cursor if wrap is `false`
   guifont = "monospace:h17",               -- the font used in graphical neovim applications
   whichwrap = "bs<>[]hl",                  -- which "horizontal" keys are allowed to travel to prev/next line
+
+  breakindent = true,                      -- wrapped lines continue visually indented
+
+  listchars = { tab = ">-", trail = "." }, -- show trailing spaces and all tabs
+  list = true,
+  fillchars = {
+    eob = " ", fold = " ", vert = " " },   -- cleaner "fills" of buffer end, folds, etc.
 }
 
 for k, v in pairs(options) do

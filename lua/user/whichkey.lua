@@ -79,9 +79,9 @@ local opts = {
 }
 
 local mappings = {
-  ["a"] = { "", "TODO: Alternate file" },
-  ["A"] = { "", "TODO: Grep word under cursor" },
-  ["c"] = { "", "TODO: copy filename to clipboard" },
+  ["a"] = { "<cmd>:A<cr>", "alt" },
+  ["A"] = { "<cmd>lua require('telescope.builtin').grep_string()<cr><esc>", "ack (under cursor)" },
+  ["c"] = { "<cmd>:let @+ = expand('%:.')<cr>:echo 'copied!'<cr>", "copy filename to clipboard" },
   ["q"] = { "<cmd>Alpha<cr>", "Alpha" },
   ["b"] = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
@@ -123,11 +123,17 @@ local mappings = {
       "Undo Stage Hunk",
     },
     o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+    b = { "<cmd>Git blame<cr>", "Blame Pane" },
     c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
     d = {
-      "<cmd>Gitsigns diffthis HEAD<cr>",
-      "Diff",
+      t = {
+        "<cmd>Gvdiffsplit<cr>",
+        "Diff This",
+      },
+      m = {
+        "<cmd>Gvdiffsplit main<cr>",
+        "Diff main",
+      }
     },
   },
 

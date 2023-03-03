@@ -93,11 +93,14 @@ return packer.startup(function(use)
 	use { "lewis6991/gitsigns.nvim", commit = "2c6f96dda47e55fa07052ce2e2141e8367cbaaf2" }
   use { "tpope/vim-fugitive" }
 
-  -- Orgmode
+	-- Orgmode
   use { "nvim-orgmode/orgmode", config = function()
     require('orgmode').setup({})
   end
   }
+
+	-- Projectionist
+  use "tpope/vim-projectionist"
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

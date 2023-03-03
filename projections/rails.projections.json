@@ -1,0 +1,82 @@
+{
+  "app/models/*.rb": {
+    "alternate": "test/models/{}_test.rb",
+    "type": "model",
+    "template": [
+      "# frozen_string_literal: true",
+      "",
+      "class {capitalize}",
+      "",
+      "end"
+    ]
+  },
+  "test/models/*_test.rb": {
+    "alternate": "app/models/{}.rb",
+    "type": "test",
+    "template": [
+      "# frozen_string_literal: true",
+      "",
+      "class {capitalize}Test",
+      "",
+      "end"
+    ]
+  },
+  "app/services/*.rb": {
+    "alternate": "test/services/{}_test.rb",
+    "type": "service"
+  },
+  "test/services/*_test.rb": {
+    "alternate": "app/services/{}.rb",
+    "type": "test"
+  },
+  "app/reports/*.rb": {
+    "alternate": "test/reports/{}_test.rb",
+    "type": "service"
+  },
+  "test/reports/*_test.rb": {
+    "alternate": "app/reports/{}.rb",
+    "type": "test"
+  },
+  "app/analytics/*.rb": {
+    "alternate": "test/analytics/{}_test.rb",
+    "type": "analytic"
+  },
+  "test/analytics/*_test.rb": {
+    "alternate": "app/analytics/{}.rb",
+    "type": "test"
+  },
+  "app/queries/*.rb": {
+    "alternate": "test/queries/{}_test.rb",
+    "type": "query"
+  },
+  "test/queries/*_test.rb": {
+    "alternate": "app/queries/{}.rb",
+    "type": "test"
+  },
+  "app/controllers/*.rb": {
+    "alternate": "test/controllers/{}_test.rb",
+    "type": "controller",
+    "template": [
+      "# frozen_string_literal: true",
+      "",
+      "class {capitalize}",
+      "",
+      "end"
+    ]
+  },
+  "test/controllers/*_test.rb": {
+    "alternate": "app/controllers/{}.rb",
+    "type": "test",
+    "template": [
+      "# frozen_string_literal: true",
+      "",
+      "class {capitalize|camelcase}Test",
+      "",
+      "end"
+    ]
+  },
+  "app/views/*.html.erb": {
+    "alternate": "app/controllers/{dirname}_controller.rb",
+    "type": "view"
+  }
+}
