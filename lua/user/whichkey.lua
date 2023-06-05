@@ -82,6 +82,7 @@ local mappings = {
   ["a"] = { "<cmd>:A<cr>", "alt" },
   ["A"] = { "<cmd>lua require('telescope.builtin').grep_string()<cr><esc>", "ack (under cursor)" },
   ["c"] = { "<cmd>:let @+ = expand('%:.')<cr>:echo 'copied!'<cr>", "copy filename to clipboard" },
+  ["C"] = { "<cmd>:let @+ = expand('%:p')<cr>:echo 'copied!'<cr>", "copy filename to clipboard" },
   ["q"] = { "<cmd>Alpha<cr>", "Alpha" },
   ["b"] = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
@@ -93,11 +94,13 @@ local mappings = {
   ["p"] = { "<cmd>bprevious<CR>", "Previous Buffer" },
   ["n"] = { "<cmd>bnext<CR>", "Previous Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  ["f"] = {
+  ["e"] = {
     "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Find files",
   },
-  ["g"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+  ["f"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+  ["t"] = { "<cmd>ToggleTerm size=20 direction=horizontal<cr>", "Find Text" },
+  ["r"] = { "<cmd>Telescope oldfiles <CR>", "Recent files" },
 
   P = {
     name = "Packer",
@@ -108,13 +111,12 @@ local mappings = {
     u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
 
-  G = {
+  g = {
     name = "Git",
-    g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
-    j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-    k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
+    n = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
+    p = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
     l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-    p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
+    i = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
     r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
     R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
     s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
@@ -123,17 +125,19 @@ local mappings = {
       "Undo Stage Hunk",
     },
     o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+    c = { "<cmd>lua require 'gitsigns'.setloclist()<cr>", "Buffer commits" },
     b = { "<cmd>Git blame<cr>", "Blame Pane" },
-    c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
     d = {
-      t = {
-        "<cmd>Gvdiffsplit<cr>",
-        "Diff This",
-      },
-      m = {
-        "<cmd>Gvdiffsplit main<cr>",
-        "Diff main",
-      }
+      name = "Diff",
+      d = { "<cmd>vert Git diff %<cr>", "Diff unstaged" },
+      m = { "<cmd>vert Git diff main %<cr>", "Diff main" },
+      M = { "<cmd>vert Git diff master %<cr>", "Diff master" },
+    },
+    D = {
+      name = "Diff inline",
+      d = { "<cmd>Gvdiffsplit<cr>", "Diff This", },
+      m = { "<cmd>Gvdiffsplit main<cr>", "Diff main", },
+      M = { "<cmd>Gvdiffsplit master<cr>", "Diff master", },
     },
   },
 
@@ -175,7 +179,7 @@ local mappings = {
     C = { "<cmd>Telescope commands<cr>", "Commands" },
   },
 
-  t = {
+  T = {
     name = "Terminal",
     e = { "<cmd>lua _RANGER_TOGGLE()<cr>", "ranger" },
     n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
