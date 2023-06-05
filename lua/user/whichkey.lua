@@ -94,11 +94,11 @@ local mappings = {
   ["p"] = { "<cmd>bprevious<CR>", "Previous Buffer" },
   ["n"] = { "<cmd>bnext<CR>", "Previous Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  ["e"] = {
+  ["f"] = {
     "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Find files",
   },
-  ["f"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+  ["<c-f>"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["t"] = { "<cmd>ToggleTerm size=20 direction=horizontal<cr>", "Find Text" },
   ["r"] = { "<cmd>Telescope oldfiles <CR>", "Recent files" },
 
@@ -125,8 +125,9 @@ local mappings = {
       "Undo Stage Hunk",
     },
     o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-    c = { "<cmd>lua require 'gitsigns'.setloclist()<cr>", "Buffer commits" },
+    -- c = { "<cmd>lua require 'gitsigns'.setloclist()<cr>", "Buffer commits" },
     b = { "<cmd>Git blame<cr>", "Blame Pane" },
+    a = { "<cmd>Git add % -p<cr>", "Add (in hunks)" },
     d = {
       name = "Diff",
       d = { "<cmd>vert Git diff %<cr>", "Diff unstaged" },
