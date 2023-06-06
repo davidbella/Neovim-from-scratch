@@ -20,6 +20,7 @@ require('orgmode').setup({
   org_agenda_start_on_weekday = false,
   org_agenda_skip_scheduled_if_done = true,
   org_agenda_span = 'day',
+  win_split_mode = 'vertical',
   org_agenda_templates = {
     b = {
       description = 'Bookmark - easy integration with the bookmark copier',
